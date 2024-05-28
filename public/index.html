@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: antiquewhite;
+            box-sizing: border-box;
+        }
+        .main_div{
+            display: flex;
+            flex-direction: column;
+            border: 2px solid grey;
+            justify-content: center;
+            align-items: center;
+            width: 25rem;
+            border-radius: 10px;
+            margin-left: 35rem;
+            padding-bottom: 2rem;
+        }
+        .span{
+            padding-top: 0.5rem;
+            font-weight: 900;
+            text-align: left;
+            margin-right: 9.5rem;
+            font-size: 1.2rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .name{
+            margin: 0.5rem;
+            color: black;
+            font-size: 1rem;
+            /* font-weight: bold; */
+            border: 1px solid grey;
+            padding: 0.3rem;
+            border-radius: 0.2rem;
+        }
+        #message{
+            margin: 0.5rem;
+            color: black;
+            font-size: 1rem;
+            /* font-weight: bold; */
+            border: 1px solid grey;
+            padding: 0.2rem 0.8rem;
+            border-radius: 0.2rem;
+        }
+        #btn{
+            margin-top: 0.5rem;
+            cursor: pointer;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;     
+            background-color: none;    
+            border-radius: 0.5rem;   
+            padding: 0.4rem 0.6rem;
+            background-color: rgb(220, 216, 216);
+        }
+        #btn:hover{
+            background-color: rgb(203, 201, 201);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="display: flex;align-items: center;justify-content: center;min-height: 2rem;font-family: Arial, Helvetica, sans-serif;">Contact Form</h1>
+        <form id="contactForm" action="/send-email" method="POST">
+            <div class="main_div">
+                <span class="span">Name : </span><input class="name" type="text" name="name" placeholder="Your Name" required>
+                <span class="span">Email : </span><input class="name" type="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button id="btn" type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            const form = event.target;
+            // console.log(form);
+            const email = form.email.value;
+            // console.log(email);
+            const name = form.name.value;
+            // console.log(name);
+            const message = form.message.value;
+            // console.log(message);
+
+            if (!email || !name || !message) {
+                alert('All fields are required!');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
